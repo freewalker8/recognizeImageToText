@@ -12,25 +12,6 @@
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
-    <!-- <h3 style="text-align: center;">图片文字识别</h3>
-    <input type="file" name="imgFile" id="imgFile" />
-    <input type="button" onclick="processImg()" name="read" value="read" />
-    <div id="readResult"></div>
-      <script>
-        function processImg() {
-          const files = document.getElementById('imgFile');
-          const file = files.files[0];
-          document.getElementById('readResult').innerText = 'Reading,hold on ...'
-          Tesseract.recognize(
-            file,
-            'chi_sim',
-            { langPath: './lang', logger: m => console.log(m) }
-          ).then(({ data: { text } }) => {
-            console.log('tesseract', text);
-            document.getElementById('readResult').innerText = text;
-          })			
-        }
-      </script> -->
     <div id="app"></div>
     <!-- built files will be auto injected -->
   </body>
