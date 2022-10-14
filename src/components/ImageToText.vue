@@ -6,7 +6,7 @@
       <input type="button" @click="recognizeImage" value="识别文字" />
     </div>
     <div class="readResult">
-      <h5>{{ fileName }}识别结果：<span v-if="reading">读取中，请稍等...</span></h5>
+      <h5>{{ fileName }}&nbsp;识别结果：<span v-if="reading">读取中，请稍等...</span></h5>
       <div class="text">
         <textarea v-model="recognizeResult"></textarea>
       </div>
@@ -35,12 +35,20 @@ export default {
       const that = this;
       const files = document.getElementById('imgFile');
       const file = files.files[0];
+      const fileName = file.name;
+      if (!['.bmp', '.jpg', '.jpeg', '.png', '.pbm'].some(ty => {
+        return fileName.endsWith(ty);
+      })) {
+        alert("文件格式不正确，支持'.bmp', '.jpg', '.jpeg', '.png', '.pbm'");
+        return;
+      }
       const fileReader = new FileReader();
       fileReader.readAsDataURL(file);
       fileReader.onload = function() {
         const objUrl = this.result;
         that.imageUrl = objUrl;
       }
+      this.fileName = fileName;
       this.reading = true;
       this.recognizeResult = '';
       try {
