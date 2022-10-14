@@ -47,7 +47,12 @@ export default {
         window.Tesseract.recognize(
           file,
           'chi_sim',
-          { langPath: './lang', logger: m => console.log(m) }
+          {
+            langPath: '/lang',
+            // langPath: '/lang/fast',
+            // corePath: '/tesseract-core.wasm.js',
+            logger: m => console.log(m)
+          }
         ).then(({ data: { text } }) => {
           console.log('识别结果：', text);
           this.reading = false;
